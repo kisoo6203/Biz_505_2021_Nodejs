@@ -10,6 +10,8 @@ CREATE database nodeDB;
 
 USE nodeDB;
 DESC tbl_bbs;
+CREATE TABLE tbl_bbs;
 DROP TABLE tbl_bbs;
+
 
 SELECT * FROM tbl_bbs;
