@@ -1,9 +1,6 @@
 extends layout
 
 block content
-	header
-		h1 나의 게시판
-		p 나의 게시판에 오신걸 환영합니다
 	section#main
 		table.bbs_list.table.etc
 			tr
@@ -33,4 +30,8 @@ block content
 				alert(b_id)
 				document.location.href=`/bbs/detail?b_id=${b_id}`
 			}
+		})
+		document.querySelector("button.btn_write")
+		.addEventListener("click",(e)=>{
+			document.location.href=`/bbs/write`			
 		})
