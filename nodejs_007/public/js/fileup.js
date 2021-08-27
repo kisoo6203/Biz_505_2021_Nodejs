@@ -29,7 +29,7 @@ const fileUpFetch = (files)=>{
 
 const fileUpAjax = (files, editor) =>{
 	
-	const formData = new FormData()
+	const formData = new FormData();
 	formData.append("file",files[0])
 
 	// jquery 의 ajax 함수를 사용하여
@@ -37,7 +37,7 @@ const fileUpAjax = (files, editor) =>{
 	$.ajax({
 		url : "/file/fileUp",
 		data : formData,
-		type : 'POST',
+		type : "POST",
 		processData : false,
 		contentType : false,
 	});

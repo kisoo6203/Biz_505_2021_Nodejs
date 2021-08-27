@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <style>
+	  * {
+		  box-sizing: border-box;
+		  margin: 0;
+		  padding: 0;
+	  }
+	  header {
+		  width: 60%;
+		  margin: 10px auto;
+		  padding: 20px;
+		  text-align: center;
+		  background-color: wheat;
+	  }
+	  section {
+		  width: 70%;
+		  margin: auto;
+		  display: grid;
+		  grid-template-columns: 20% 20% 20% 20% 20%;
+		  gap: 10px;
+	  }
+	  .table_box {
+		  display: flex;
+		  flex-direction: column;
+		  border: 1px solid yellowgreen;
+		  height: 25vh;
+		  text-align: center;
+		  cursor: pointer;
+	  
+	  }
+	  .table_box > div:first-child {
+		  width: 100%;
+		  flex: 1;
+		  border: 1px solid red;
+	  }
+	  .table_box > div:last-child {
+		  width: 100%;
+		  flex: 8;
+		  border: 1px solid blue;
+	  }
+  
+  </style>
+  <body>
+	<header>
+		<h1>우리동네 김밥나라</h1>
+		<p>POS정산</p>
+	</header>
+	<section id="order">
+		<div class="table_box">
+			<div data-id="tb1" class="table_name">1번 테이블</div>
+			<div data-id="tb1" class="blank">메뉴</div>
+		</div>
+		<div class="table_box">
+			<div data-id="tb2" class="table_name">2번 테이블</div>
+			<div data-id="tb2" class="blank">메뉴</div>
+		</div>
+		<div class="table_box">
+			<div data-id="tb3" class="table_name">3번 테이블</div>
+			<div data-id="tb3" class="blank">메뉴</div>
+		</div>
+		<div class="table_box">
+			<div data-id="tb4" class="table_name">4번 테이블</div>
+			<div data-id="tb4" class="blank">메뉴</div>
+		</div>
+		<div class="table_box">
+			<div data-id="tb5" class="table_name">5번 테이블</div>
+			<div data-id="tb5" class="blank">메뉴</div>
+		</div>
+		<div class="table_box">
+			<div data-id="tb6" class="table_name">6번 테이블</div>
+			<div data-id="tb6" class="blank">메뉴</div>
+		</div>
+		<div class="table_box">
+			<div data-id="tb7" class="table_name">7번 테이블</div>
+			<div data-id="tb7" class="blank">메뉴</div>
+		</div>
+		<div class="table_box">
+			<div data-id="tb8" class="table_name">8번 테이블</div>
+			<div data-id="tb8" class="blank">메뉴</div>
+		</div>
+		<div class="table_box">
+			<div data-id="tb9" class="table_name">9번 테이블</div>
+			<div data-id="tb9" class="blank">메뉴</div>
+		</div>
+		<div class="table_box">
+			<div data-id="tb10" class="table_name">10번 테이블</div>
+			<div data-id="tb10" class="blank">메뉴</div>
+		</div>
+	</section>
+
+  </body>
+
+  <script>
+	  document.querySelector("section").addEventListener("click", (e) =>{
+		  const div = e.target;
+		  alert(div.dataset.id);
+		  if(div.tagName ==="DIV"){
+			  const bk = div.parentNode;
+			  const d_id = div.dataset.id;
+			//   alert(d_id);
+			  document.location.href=`/pos/detail?d_id=${d_id}`;
+		  };
+	  });
+  </script>
+</html>
