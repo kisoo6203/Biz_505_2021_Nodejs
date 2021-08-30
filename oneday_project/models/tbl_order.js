@@ -36,6 +36,8 @@ module.exports = (sequelize, DataTypes) =>{
 			allowNull: false,
 		},
 	});
+	order.associate = (models)=>{
+		order.belongsTo(models.tbl_product);
+	};
 	return order;
-
 };

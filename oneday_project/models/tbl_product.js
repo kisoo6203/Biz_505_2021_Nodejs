@@ -3,7 +3,6 @@ module.exports = (sequelize, DataTypes) =>{
 		// 상품코드
 		p_code : {
 			type:DataTypes.STRING(10),
-			
 			primaryKey:true,
 		},
 		// 상품명
@@ -23,7 +22,9 @@ module.exports = (sequelize, DataTypes) =>{
 		},
 		
 	});
-
+	product.associate = (models)=>{
+		product.hasMany(models.tbl_order, {foreignKey: "o_pcode" });
+	};
 	return product;
 	
 };

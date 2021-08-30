@@ -98,12 +98,15 @@
   <script>
 	  document.querySelector("section").addEventListener("click", (e) =>{
 		  const div = e.target;
-		  alert(div.dataset.id);
+		//   alert(div.dataset.id);
 		  if(div.tagName ==="DIV"){
-			  const bk = div.parentNode;
-			  const d_id = div.dataset.id;
+
+			const o_table = div.innerText;
+			alert(o_table);
+			//   const bk = div.parentNode;
+			//   const d_id = div.dataset.id;
 			//   alert(d_id);
-			  document.location.href=`/pos/detail?o_table=${o_table}`;
+			  document.location.href=`/order/detail?o_table=${o_table}`;
 		  };
 	  });
   </script>

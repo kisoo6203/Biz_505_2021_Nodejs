@@ -7,21 +7,21 @@ router.get("/detail",(req,res)=>{
 
     const o_seq = req.query.o_seq;
 
-    tbl_pos
+    tbl_order
     .findOne({
         where : {o_seq},
         include : {model:tbl_product},
     })
     .then(result=>{
         console.log(result);
-        res.render("detail",{POS:result});
+        res.render("detail",{ORDER:result});
     });
 
 });
 
 router.get("/delete",(req,res)=>{
     const o_seq = req.query.o_seq;
-    tbl_pos
+    tbl_order
 
     .destroy({
         where: {o_seq},
@@ -34,9 +34,9 @@ router.get("/delete",(req,res)=>{
 router.get("/update",(req,res)=>{
     const o_seq = req.query.o_seq
 
-    tbl_pos.findByPk(o_seq)
+    tbl_order.findByPk(o_seq)
     .then(result=>{
-        res.render("write",{POS:result});
+        res.render("write",{ORDER:result});
     });
 });
 
@@ -44,7 +44,7 @@ router.post("/update",(req,res)=>{
     const o_seq = req.query.o_seq
 
     req.body.o_seq = o_seq;
-    tbl_pos.update(req.body,{where : {o_seq}})
+    tbl_order.update(req.body,{where : {o_seq}})
     .then(result=>{
         res.redirect("/");
     });
@@ -52,7 +52,7 @@ router.post("/update",(req,res)=>{
 
 router.post("/product",(req,res)=>{
     tbl_product.create(req.body).then((result)=>{
-        res.redirect("/pos/detail?o_seq=" + req.body.p_code);
+        res.redirect("/order/detail?o_seq=" + req.body.p_code);
     });
 });
 
@@ -65,7 +65,7 @@ router.get("/product/delete/:rid",(req,res)=>{
         const code = result.p_cde;
         tbl_product.destroy( {where :{id : rid} })
         .then(()=>{
-            res.redirect(`/pos/detail?o_seq=${code}`);
+            res.redirect(`/order/detail?o_seq=${p_code}`);
         });
     });
 });
