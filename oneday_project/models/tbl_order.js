@@ -1,9 +1,8 @@
 module.exports = (sequelize, DataTypes) =>{
-	const pos = sequelize.define("tbl_pos",{
+	const order = sequelize.define("tbl_order",{
 		// seq
 		o_seq : {
 			type:DataTypes.STRING(10),
-			autoIncrement:true,
 			primaryKey:true,
 		},
 		// 테이블id
@@ -37,8 +36,6 @@ module.exports = (sequelize, DataTypes) =>{
 			allowNull: false,
 		},
 	});
-	pos.associate = (models)=>{
-		pos.hasMany(models.tbl_product,{foreignKey : 'p_code'})
-	};
-	return pos;
+	return order;
+
 };

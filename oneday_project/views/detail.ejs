@@ -10,25 +10,25 @@
 <body>
 	<section>
 		<div>
-			<span class="name">음식</span>
-			<span class="data"><%- POS.p_name %></span>
+			<span class="name">메뉴</span>
+			<span class="data"><%- ORDER.o_pcode %></span>
 		</div>
 		<div>
 			<span class="price">단가</span>
-			<span class="data"><%- POS.p_price</span>
+			<span class="data"><%- ORDER.o_price %></span>
 		</div>
 		<div>
 			<span class="qu">수량</span>
-			<span class="data"><%- POS.p_qu</span>
+			<span class="data"><%- ORDER.o_count %></span>
 		</div>
 		<div>
 			<span class="addprice">금액</span>
-			<span class="data"><%- POS.p_addprice</span>
+			<span class="data"><%- ORDER.o_total %></span>
 		</div>
 	</section>
 </body>
+<script>
+
+</script>
+
 </html>
-<div>
-	<span class="title">작성시각</span>
-	<span class="data"><%- BBS.b_time %></span>
-</div>

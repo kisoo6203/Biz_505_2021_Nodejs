@@ -9,7 +9,7 @@ var app = express();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var posRouter = require("./routes/posRouter");
-const { sequelize } = require('../nodejs_007/models');
+const { sequelize } = require('../oneday_project/models');
 
 sequelize.sync();
 
@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/order', posRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

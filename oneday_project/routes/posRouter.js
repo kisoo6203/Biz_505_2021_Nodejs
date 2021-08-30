@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router();
 
-const {tbl_pos, tbl_product } = require("../models/index");
+const {tbl_order, tbl_product } = require("../models/index");
 
 router.get("/detail",(req,res)=>{
 
@@ -20,11 +20,11 @@ router.get("/detail",(req,res)=>{
 });
 
 router.get("/delete",(req,res)=>{
-    const b_id = req.query.b_id;
-    tbl_bbs
+    const o_seq = req.query.o_seq;
+    tbl_pos
 
     .destroy({
-        where: {b_id},
+        where: {o_seq},
     })
     .then(() => {
         res.redirect("/");
@@ -32,40 +32,40 @@ router.get("/delete",(req,res)=>{
 });
 
 router.get("/update",(req,res)=>{
-    const b_id = req.query.b_id
+    const o_seq = req.query.o_seq
 
-    tbl_bbs.findByPk(b_id)
+    tbl_pos.findByPk(o_seq)
     .then(result=>{
-        res.render("write",{BBS:result});
+        res.render("write",{POS:result});
     });
 });
 
 router.post("/update",(req,res)=>{
-    const b_id = req.query.b_id
+    const o_seq = req.query.o_seq
 
-    req.body.b_id = b_id;
-    tbl_bbs.update(req.body,{where : {b_id}})
+    req.body.o_seq = o_seq;
+    tbl_pos.update(req.body,{where : {o_seq}})
     .then(result=>{
         res.redirect("/");
     });
 });
 
-router.post("/reply",(req,res)=>{
-    tbl_reply.create(req.body).then((result)=>{
-        res.redirect("/bbs/detail?b_id=" + req.body.r_postId);
+router.post("/product",(req,res)=>{
+    tbl_product.create(req.body).then((result)=>{
+        res.redirect("/pos/detail?o_seq=" + req.body.p_code);
     });
 });
 
 
-router.get("/reply/delete/:rid",(req,res)=>{
+router.get("/product/delete/:rid",(req,res)=>{
     const rid = req.params.rid;
 
-    tbl_reply.findByPk(rid)
+    tbl_product.findByPk(rid)
     .then((result)=>{
-        const postId = result.r_postId;
-        tbl_reply.destroy( {where :{id : rid} })
+        const code = result.p_cde;
+        tbl_product.destroy( {where :{id : rid} })
         .then(()=>{
-            res.redirect(`/bbs/detail?b_id=${postId}`);
+            res.redirect(`/pos/detail?o_seq=${code}`);
         });
     });
 });

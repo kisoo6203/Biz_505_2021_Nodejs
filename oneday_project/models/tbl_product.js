@@ -1,9 +1,9 @@
 module.exports = (sequelize, DataTypes) =>{
-	const pro = sequelize.define("tbl_product",{
+	const product = sequelize.define("tbl_product",{
 		// 상품코드
 		p_code : {
-			type:DataTypes.INTEGER,
-			autoIncrement:true,
+			type:DataTypes.STRING(10),
+			
 			primaryKey:true,
 		},
 		// 상품명
@@ -18,14 +18,12 @@ module.exports = (sequelize, DataTypes) =>{
 		},
 		// 세부설명
 		p_rem : {
-			type:DataTypes.STRING(30),
+			type:DataTypes.STRING(255),
 			
 		},
 		
 	});
-	product.associate = (models)=>{
-		product.belongsTo(models.tbl_pos);
-	};
-	return reply;
+
+	return product;
 	
 };
